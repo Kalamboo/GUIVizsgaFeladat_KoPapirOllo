@@ -1,8 +1,13 @@
 package view;
+
+import java.awt.Button;
+
 public class MainForm extends javax.swing.JFrame {
 
     public MainForm() {
         initComponents();
+        this.setTitle("Játék");
+        korGombElrejt();
     }
 
     /**
@@ -14,6 +19,8 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        strategiaGombok = new javax.swing.ButtonGroup();
+        valasztasGombok = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         numMax = new javax.swing.JSpinner();
@@ -21,18 +28,33 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnIndit = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        koGomb = new javax.swing.JRadioButton();
+        papirGomb = new javax.swing.JRadioButton();
+        olloGomb = new javax.swing.JRadioButton();
+        nagyKep = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        gepValasztas = new javax.swing.JLabel();
+        korNyertes = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Beállítások"));
 
         jLabel1.setText("körök száma 2 -");
+
+        numMax.setModel(new javax.swing.SpinnerNumberModel(5, 5, 10, 1));
 
         chbMent.setSelected(true);
         chbMent.setText("kilépéskor ment");
@@ -75,12 +97,35 @@ public class MainForm extends javax.swing.JFrame {
 
         btnIndit.setText("Kör indítása");
         btnIndit.setActionCommand("");
+        btnIndit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInditActionPerformed(evt);
+            }
+        });
 
-        jRadioButton1.setText("Kő");
+        valasztasGombok.add(koGomb);
+        koGomb.setText("Kő");
+        koGomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                koGombActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setText("Papír");
+        valasztasGombok.add(papirGomb);
+        papirGomb.setText("Papír");
+        papirGomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                papirGombActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("Olló");
+        valasztasGombok.add(olloGomb);
+        olloGomb.setText("Olló");
+        olloGomb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                olloGombActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -91,11 +136,11 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnIndit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(koGomb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2)
+                        .addComponent(papirGomb)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3)))
+                        .addComponent(olloGomb)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -103,40 +148,61 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(koGomb)
+                    .addComponent(papirGomb)
+                    .addComponent(olloGomb))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnIndit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Aktuális kör állapota"));
+        nagyKep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/res/KoPapirOllo.jpg"))); // NOI18N
 
-        jLabel3.setText("gép választása:");
+        jLabel3.setText("Aktuális kör állapota");
 
-        jLabel4.setText("kör nyertese:");
+        jLabel4.setText("gép választása:");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel5.setText("kör nyertese:");
+
+        jMenu1.setText("Fájl");
+
+        jMenuItem1.setText("Ment");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Betölt");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Kilép");
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Stratégia");
+
+        strategiaGombok.add(jRadioButtonMenuItem1);
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("Véletlen");
+        jMenu2.add(jRadioButtonMenuItem1);
+
+        strategiaGombok.add(jRadioButtonMenuItem2);
+        jRadioButtonMenuItem2.setText("Előző");
+        jMenu2.add(jRadioButtonMenuItem2);
+
+        strategiaGombok.add(jRadioButtonMenuItem3);
+        jRadioButtonMenuItem3.setText("Ami nem volt");
+        jMenu2.add(jRadioButtonMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Beállítások");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,23 +213,127 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(nagyKep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(gepValasztas))
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(korNyertes)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(nagyKep)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(gepValasztas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(korNyertes))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+           
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btnInditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInditActionPerformed
+        korVege();
+        korGombElrejt();
+    }//GEN-LAST:event_btnInditActionPerformed
+    
+    private void korGombElrejt(){
+        btnIndit.setEnabled(false);
+        koGomb.setSelected(false);
+        papirGomb.setSelected(false);
+        olloGomb.setSelected(false);
+    }
+    
+    private void korVege(){
+        int jatekosValasz = 0;
+        if (koGomb.isSelected()) {
+            jatekosValasz = 1;
+        }else if (papirGomb.isSelected()) {
+            jatekosValasz = 2;
+        }else{
+            jatekosValasz = 3;
+        }
+          
+        int gepiValasz = (int) (Math.random()*(3-1+1)+1);
+        gepValaszKiir(gepiValasz);
+        korNyertesKiir(jatekosValasz, gepiValasz);
+    }
+    
+    private void korNyertesKiir(int j, int g){
+        String valasz = "";
+        if (j == g) {
+            valasz = "Döntetlen";
+        }else if (j == 1 && g == 2) {
+            valasz = "Gép nyert!";
+        }else if (j == 2 && g == 3) {
+            valasz = "Gép nyert!";
+        }else if (j == 3 && g == 1) {
+            valasz = "Gép nyert!";
+        }else if (j == 2 && g == 1) {
+            valasz = "Játékos nyert!";
+        }else if (j == 3 && g == 2) {
+            valasz = "Játékos nyert!";
+        }else if (j == 1 && g == 3) {
+            valasz = "Játékos nyert!";
+        }
+        korNyertes.setText(valasz);
+    }
+    
+    private void gepValaszKiir(int szam){
+        String valasz = "";
+        switch (szam) {
+            case 1:
+                valasz = "kő";
+                break;
+            case 2:
+                valasz = "papír";
+                break;
+            case 3:
+                valasz = "olló";
+                break;
+        }
+        gepValasztas.setText(valasz);
+    }
+    
+    private void korGombMegjelenit(){
+        btnIndit.setEnabled(true);
+    }
+    
+    private void koGombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_koGombActionPerformed
+        korGombMegjelenit();
+    }//GEN-LAST:event_koGombActionPerformed
+
+    private void papirGombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_papirGombActionPerformed
+        korGombMegjelenit();
+    }//GEN-LAST:event_papirGombActionPerformed
+
+    private void olloGombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_olloGombActionPerformed
+        korGombMegjelenit();
+    }//GEN-LAST:event_olloGombActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -201,16 +371,31 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIndit;
     private javax.swing.JCheckBox chbMent;
+    private javax.swing.JLabel gepValasztas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButton koGomb;
+    private javax.swing.JLabel korNyertes;
+    private javax.swing.JLabel nagyKep;
     private javax.swing.JSpinner numMax;
+    private javax.swing.JRadioButton olloGomb;
+    private javax.swing.JRadioButton papirGomb;
+    private javax.swing.ButtonGroup strategiaGombok;
+    private javax.swing.ButtonGroup valasztasGombok;
     // End of variables declaration//GEN-END:variables
 }
